@@ -1,13 +1,16 @@
 import numpy as np
-import pickle
 import pandas as pd
 import streamlit as st
+from surprise import SVD
+from surprise import Reader
+from surprise import Dataset
+reader = Reader(rating_scale=(1, 5))
 
-
-# loading the saved model
-best_algo = pickle.load(open('trained_model.sav', 'rb'))
+# loading the dataframes
 movies_df = pd.read_csv('data/movies.csv')
 ratings_df = pd.read_csv('data/ratings.csv')
+ratings_df = ratings_df.drop("timestamp", axis = 1)
+movie_list20 = [ 356,  318,  296,  593, 2571,  260,  480,  110,  589,  527, 2959, 1, 1196, 2858,   50,   47,  780,  150, 1198, 4993]
 
 # creating a function for Prediction
 
@@ -29,13 +32,19 @@ def rate_and_rec(user_rating, ratings_df, movies_df, genre=None):
     ## add the new ratings to the original ratings DataFrame
     user_ratings_df = pd.DataFrame(user_rating)
     ratings_df = pd.concat([ratings_df, user_ratings_df], axis=0)
+    new_data = Dataset.load_from_df(ratings_df, reader)
+    best_algo = SVD(n_factors= 200, n_epochs= 80, lr_all= 0.01, reg_all= 0.1)
+    best_algo.fit(new_data.build_full_trainset())
 
     # make predictions for the user
     # you'll probably want to create a list of tuples in the format (movie_id, predicted_score)
     recc_movies = []
     for m_id in ratings_df['movieId'].unique():
-        prediction = best_algo.predict(1000,m_id)[3]
-        recc_movies.append( (m_id, prediction) )
+        if (m_id in movie_list20): 
+            continue
+        else:
+            prediction = best_algo.predict(1000,m_id)[3]
+            recc_movies.append( (m_id, prediction) )
     
     # order the predictions from highest to lowest rated
     ranked_movies = sorted(recc_movies, key=lambda x:x[1], reverse = True)
@@ -48,9 +57,10 @@ def main():
     
     
     # giving a title
-    st.title('Movie Recommendation Web App')
+    st.title("Flix Finder")
     '''
-    ## Rate these films from 1 to 5
+    ## A Movie Recommender for FlixNet
+    ### Rate these films from 1 to 5
     _If you haven't seen a film, leave the slider at 0_
     '''
     
