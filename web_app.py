@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
+import surprise
 from surprise import SVD
 from surprise import Reader
 from surprise import Dataset
