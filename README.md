@@ -10,6 +10,7 @@ Flixnet is a large movie streaming platform that draws in many users every day. 
 - 100k ratings from MovieLens 
 610 users, 9700 movies
 - All users rated at least 20 movies
+- 610 unique users and 9724 different movies
 - Between March 1996 and September 2018
 
 
