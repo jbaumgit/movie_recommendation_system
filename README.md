@@ -15,7 +15,7 @@ Flixnet is a large movie streaming platform that draws in many users every day. 
 
 
 
-![20_most_rated_films](Images\20_most_rated_films.png)
+![20_most_rated_films](Images/20_most_rated_films.png)
 
 Superusers are users who have reviewed more than 500 films. We choose this cut off based off of this histogram:
 
@@ -53,10 +53,10 @@ You are in the README.md.  'Surprise_Movie_Recc_System.ipynb' contains the jupyt
 
 ├── .gitignore                              <- Contains list of files to be ignored from GitHub
 
-├── Movie Recommendation System.pdf   <- Slide Presentation of the project
+├── Movie Recommendation System.pdf         <- Slide Presentation of the project
 
 ├── README.md                               <- Contains README file to be reviewed
 
-├── web_app.py                               <- Contains python file of the final model deployable with Streamlit
+├── web_app.py                              <- Contains python file of the final model deployable with Streamlit
 
-└── Surprise_Movie_Recc_System.ipynb   <- Jupyter notebook of the project containing codes and analysis
+└── Surprise_Movie_Recc_System.ipynb        <- Jupyter notebook of the project containing codes and analysis
