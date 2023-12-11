@@ -1,4 +1,4 @@
-!["Movies"](Images\title.png)
+!["Movies"](Images/title.png)
 # Surprise Movie Recommendation System
 
 ## Business Problem
@@ -19,7 +19,7 @@ Flixnet is a large movie streaming platform that draws in many users every day. 
 
 Superusers are users who have reviewed more than 500 films. We choose this cut off based off of this histogram:
 
-![superusers](Images\superusers.png)
+![superusers](Images/superusers.png)
 
 ## Modeling
 
@@ -27,14 +27,14 @@ Our baseline model will be KNNBasic, a basic collaborative filtering algorithm, 
 
 We also modeled using KNNBaseline, NMF, and SVD. After a grid search on each of these to determine best parameters, we determined the best model to be SVD because it has the lowest RMSE.
 
-![model_comparison](Images\model_comparison.png)
+![model_comparison](Images/model_comparison.png)
 
 
 ## Recommendation System Prieview
 
 We deployed our recommendation system using Streamlit. Users can move sliders on to rate the 20 most rated films in our data. Following those 20 sliders, users can get recommendation of 5 films to watch next.
 
-![app_preview](Images\App_preview.png)
+![app_preview](Images/App_preview.png)
 
 ## Appendix
 
